@@ -32,20 +32,20 @@ export default function SignUp(){
 
                     <input 
                         type='text'
-                        placeholder='Digite seu nome'
+                        placeholder='Escreva o seu nome'
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
 
                     <input 
                         type='text'
-                        placeholder='email@email.com'
+                        placeholder='Introduza o seu email'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
 
                     <input 
-                        type='password'
+                        type='Introduza a sua password'
                         placeholder='********'
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
@@ -57,7 +57,7 @@ export default function SignUp(){
                 
                 </form>
 
-                <Link to="/"> Ja possui uma conta? Faça login </Link>
+                <Link to="/"> Ja tem uma conta? Faça login! </Link>
             </div>
         </div>
     )
