@@ -44,12 +44,12 @@ export default function SignIn(){
                     />
 
                     <button type='submit'>
-                        {loadingAuth ? 'A Carregar...' : 'Aceder'}
+                        {loadingAuth ? 'A Carregar...' : 'Entrar'}
                     </button>
                 
                 </form>
 
-                <Link to="/register"> Criar uma conta </Link>
+                <Link to="/register"> Quer criar uma conta? </Link>
             </div>
         </div>
     )
