@@ -24,7 +24,7 @@ export default function SignUp(){
         <div className='container-center'>
             <div className='login'>
                 <div className='login-area'>    
-                    <img src={logo} alt="logo do sistemas de chamados" />
+                    <img src={logo} alt="logo do sistemas de Pedidos" />
                 </div>
 
                 <form onSubmit={handleSubmit}>
