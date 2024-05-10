@@ -7,8 +7,8 @@ import {getStorage} from "firebase/storage"
 const firebaseConfig = {
   apiKey: "AIzaSyA3JTUkMKpUm9zACJdoaGFElqhxhk9wloI ",
   authDomain: "site-job-founder.firebaseapp.com ",
-  projectId: "tickets-e80d6",
-  storageBucket: "tickets-e80d6.appspot.com",
+  projectId: "site-job-founder",
+  storageBucket: "site-job-founder.appspot.com",
   messagingSenderId: "1026627261769",
   appId: "1:1026627261769:web:02aa48fda706659dd87698",
   measurementId: "G-90V6B6F4RW"
