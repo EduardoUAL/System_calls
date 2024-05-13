@@ -4,6 +4,7 @@ import {getAuth} from "firebase/auth"
 import {getFirestore} from "firebase/firestore"
 import {getStorage} from "firebase/storage"
 
+
 const firebaseConfig = {
   apiKey: "AIzaSyA3JTUkMKpUm9zACJdoaGFElqhxhk9wloI",
   authDomain: "site-job-founder.firebaseapp.com",
