@@ -22,7 +22,7 @@ import './dasboard.css'
 
  const Dasboard = () => {
 
-  const [ chamados, setChamados ] = useState([])
+  const [ Pedidos, setPedidos ] = useState([])
   const [ loading, setLoading ] = useState(true)
 
   const [ isEmpty, setIsEmpty ] = useState(false)
@@ -34,7 +34,7 @@ import './dasboard.css'
 
   
   useEffect(() => {
-    async function loadChamados(){
+    async function loadPedidos(){
 
       const listRef = collection(db, 'LogTickets')
 
@@ -46,7 +46,7 @@ import './dasboard.css'
       setLoading(false)
     }
 
-    loadChamados()
+    loadPedidos()
 
     return () => {}
 
@@ -65,6 +65,8 @@ import './dasboard.css'
           assunto: doc.data().assunto,
           cliente: doc.data().cliente,
           clienteId: doc.data().clienteId,
+          companies: doc.data().companies,
+          companiesId: doc.data().companiesId,
           created: doc.data().created,
           createdFormat: format(doc.data().created.toDate(), 'dd/MM/yyyy'),
           status: doc.data().status,
@@ -74,7 +76,7 @@ import './dasboard.css'
 
       const lastDoc = querySnapshot.docs[querySnapshot.docs.length -1]
 
-      setChamados(chamados => [...chamados, ...lista])
+      setPedidos(Pedidos => [...Pedidos, ...lista])
       setLastDocs(lastDoc)
 
     } else {
@@ -109,7 +111,7 @@ import './dasboard.css'
           </Title>
 
           <div className="container dashboard">
-            <span>Buscando chamados...</span>
+            <span>À Procurar Pedidos...</span>
           </div>
         </div>
       </div>
@@ -127,13 +129,13 @@ import './dasboard.css'
 
         <>
          
-          { chamados.length === 0 ? (
+          { Pedidos.length === 0 ? (
             <div className="container dashboard">
-              <span>Nenhum chamado encontrado...</span>
+              <span>Nenhum Pedido encontrado...</span>
 
               <Link to="/new" className="new">
                 <FiPlus size={25} color="#FFF"/>
-                Novo chamado
+                Novo Pedido
              </Link>
 
             </div>
@@ -141,7 +143,7 @@ import './dasboard.css'
             <>
               <Link to="/new" className="new">
                 <FiPlus size={25} color="#FFF"/>
-                Novo chamado
+                Novo Pedido
               </Link>
 
               <table>
@@ -156,7 +158,7 @@ import './dasboard.css'
                 </thead>
 
                 <tbody>
-                 {chamados.map((item, index) => {
+                 {Pedidos.map((item, index) => {
                   return(
                     <tr key={index}>
                     <td data-label='Cliente'> {item.cliente} </td>
@@ -181,7 +183,7 @@ import './dasboard.css'
                 </tbody>
               </table>
               
-              {loadingMore && <h3> Á procura de pedidos... </h3>}
+              {loadingMore && <h3> Á procura de Pedidos... </h3>}
               {!loadingMore && !isEmpty && <button className="btn-more" onClick={handleMore}> Procurar mais </button>}
               
             </>
