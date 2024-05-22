@@ -141,7 +141,7 @@ export default function New(){
         //submit a ticket
         await addDoc(collection(db, "LogTickets"), {
             created: new Date(),
-            cliente: customers[customerSelected].nomeFantasia,
+            cliente: customers[customerSelected].NickName,
             clienteId: customers[customerSelected].id,
             companyId: companyId, // add company ID
             companyName: companyName, // add company name
