@@ -49,14 +49,14 @@ export default function New(){
                 snapshot.forEach((doc) => {
                     lista.push({
                         id: doc.id,
-                        nomeFantasia: doc.data().nomeFantasia
+                        NickName: doc.data().NickName
                     })
                 })
 
                 if(snapshot.docs.size === 0){
                     console.log('NENHUMA EMPRESA FOI ENCONTRADA')
                     setLoadCustomer(false)
-                    setCustomers([{id: '1', nomeFantasia: 'Freela'}])
+                    setCustomers([{id: '1', NickName: 'Freela'}])
                     return
                 }
 
@@ -70,7 +70,7 @@ export default function New(){
             .catch((error) => {
                 console.log('ERRO AO PROCURAR CLIENTES', error)
                 setLoadCustomer(false)
-                setCustomers([{id: '1', nomeFantasia: 'Freela'}])
+                setCustomers([{id: '1', NickName: 'Freela'}])
             })
         }
 
@@ -115,7 +115,7 @@ export default function New(){
         if(idCustomer){
             const docRef = doc(db, "LogTickets", id)
             await updateDoc(docRef, {
-                cliente: customers[customerSelected].nomeFantasia,
+                cliente: customers[customerSelected].NickName,
                 clienteId: customers[customerSelected].id,
                 companyId: companyId, // add company ID
                 companyName: companyName, // add company name
@@ -141,7 +141,7 @@ export default function New(){
         //submit a ticket
         await addDoc(collection(db, "LogTickets"), {
             created: new Date(),
-            cliente: customers[customerSelected].nomeFantasia,
+            cliente: customers[customerSelected].NickName,
             clienteId: customers[customerSelected].id,
             companyId: companyId, // add company ID
             companyName: companyName, // add company name
@@ -181,7 +181,7 @@ export default function New(){
                                     {customers.map((item, index) => {
                                         return(
                                             <option key={index} value={index}>
-                                                {item.nomeFantasia}
+                                                {item.NickName}
                                             </option>
                                         )
                                     })}
