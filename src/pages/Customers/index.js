@@ -24,7 +24,7 @@ export default function Customers(){
 
         if(nome !== '' && cc !== '' && morada !== ''){
             await addDoc(collection(db, "customers"), {
-                nomeFantasia: nome,
+                NickName: nome,
                 cc: cc,
                 morada: morada
             })
@@ -54,7 +54,7 @@ export default function Customers(){
 
             <div className="container">
                 <form className="form-profile" onSubmit={handleRegister} >
-                    <label>Nome Fantasia</label>
+                    <label>Nome</label>
                     <input 
                         type='text'
                         placeholder="Nome da empresa"
