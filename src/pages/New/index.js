@@ -109,14 +109,16 @@ export default function New(){
         setCustomerSelected(e.target.value)
     }
 
-    async function handleRegister(e){
+    async function handleRegister(e, companyId, companyName){
         e.preventDefault()
-
+    
         if(idCustomer){
             const docRef = doc(db, "LogTickets", id)
             await updateDoc(docRef, {
                 cliente: customers[customerSelected].nomeFantasia,
                 clienteId: customers[customerSelected].id,
+                companyId: companyId, // add company ID
+                companyName: companyName, // add company name
                 assunto: assunto,
                 complemento: complemento,
                 status: status,
@@ -132,15 +134,17 @@ export default function New(){
                 toast.error('Ops, ocorreu um erro ao atualizar o seu Pedido!')
                 console.log(error)
             })
-
+    
             return
         }
-
+    
         //submit a ticket
         await addDoc(collection(db, "LogTickets"), {
             created: new Date(),
             cliente: customers[customerSelected].nomeFantasia,
             clienteId: customers[customerSelected].id,
+            companyId: companyId, // add company ID
+            companyName: companyName, // add company name
             assunto: assunto,
             complemento: complemento,
             status: status,
