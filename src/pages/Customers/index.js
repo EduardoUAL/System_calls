@@ -65,7 +65,7 @@ export default function Customers(){
                     <label>cc</label>
                     <input 
                         type='text'
-                        placeholder='Digite o cc'
+                        placeholder='Introduza o seu cc'
                         value={cc}
                         onChange={(e) => setcc(e.target.value)}
                     />
@@ -73,7 +73,7 @@ export default function Customers(){
                     <label>morada</label>
                     <input 
                         type='text'
-                        placeholder='Digite o morada'
+                        placeholder='Introduza a sua morada'
                         value={morada}
                         onChange={(e) => setmorada(e.target.value)}
                     />
