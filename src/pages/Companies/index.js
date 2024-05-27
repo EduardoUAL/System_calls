@@ -1,6 +1,8 @@
 import Header from "../../components/Header";
 import Title from "../../components/Title";
 
+//-- React Icons
+import { FiUser } from 'react-icons/fi'
 
 export default function Companies(){
     
@@ -11,7 +13,7 @@ export default function Companies(){
 
             <div className='content'>
                 <Title name = "Empresas">
-
+                   <FiUser size={25} />
                 </Title>
             </div>
             
