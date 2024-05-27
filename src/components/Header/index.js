@@ -33,6 +33,11 @@ export default function Header(){
                 Clientes
             </Link>
 
+            <Link to="/Companies">
+                <FiUser color="#FFF" size={24} />
+                Empresas
+            </Link>
+
             <Link to="/profile">
                 <FiSettings color="#FFF" size={24} />
                 Perfil
