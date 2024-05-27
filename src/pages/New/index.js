@@ -49,14 +49,14 @@ export default function New(){
                 snapshot.forEach((doc) => {
                     lista.push({
                         id: doc.id,
-                        nomeFantasia: doc.data().nomeFantasia
+                        NickName: doc.data().NickName
                     })
                 })
 
                 if(snapshot.docs.size === 0){
                     console.log('NENHUMA EMPRESA FOI ENCONTRADA')
                     setLoadCustomer(false)
-                    setCustomers([{id: '1', nomeFantasia: 'Freela'}])
+                    setCustomers([{id: '1', NickName: 'Freela'}])
                     return
                 }
 
@@ -70,7 +70,7 @@ export default function New(){
             .catch((error) => {
                 console.log('ERRO AO PROCURAR CLIENTES', error)
                 setLoadCustomer(false)
-                setCustomers([{id: '1', nomeFantasia: 'Freela'}])
+                setCustomers([{id: '1', NickName: 'Freela'}])
             })
         }
 
@@ -109,14 +109,16 @@ export default function New(){
         setCustomerSelected(e.target.value)
     }
 
-    async function handleRegister(e){
+    async function handleRegister(e, companyId, companyName){
         e.preventDefault()
-
+    
         if(idCustomer){
             const docRef = doc(db, "LogTickets", id)
             await updateDoc(docRef, {
-                cliente: customers[customerSelected].nomeFantasia,
+                cliente: customers[customerSelected].NickName,
                 clienteId: customers[customerSelected].id,
+                companyId: companyId, // add company ID
+                companyName: companyName, // add company name
                 assunto: assunto,
                 complemento: complemento,
                 status: status,
@@ -132,15 +134,17 @@ export default function New(){
                 toast.error('Ops, ocorreu um erro ao atualizar o seu Pedido!')
                 console.log(error)
             })
-
+    
             return
         }
-
+    
         //submit a ticket
         await addDoc(collection(db, "LogTickets"), {
             created: new Date(),
-            cliente: customers[customerSelected].nomeFantasia,
+            cliente: customers[customerSelected].NickName,
             clienteId: customers[customerSelected].id,
+            companyId: companyId, // add company ID
+            companyName: companyName, // add company name
             assunto: assunto,
             complemento: complemento,
             status: status,
@@ -177,7 +181,7 @@ export default function New(){
                                     {customers.map((item, index) => {
                                         return(
                                             <option key={index} value={index}>
-                                                {item.nomeFantasia}
+                                                {item.NickName}
                                             </option>
                                         )
                                     })}

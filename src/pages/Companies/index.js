@@ -24,7 +24,7 @@ export default function companies(){
 
         if(nome !== '' && cc !== '' && morada !== ''){
             await addDoc(collection(db, "companies"), {
-                nomeFantasia: nome,
+                CompanyName: nome,
                 cc: cc,
                 morada: morada
             })
