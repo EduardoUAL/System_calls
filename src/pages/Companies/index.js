@@ -14,7 +14,7 @@ import { db } from '../../services/firebaseConnection'
 //--Toast
 import { toast } from 'react-toastify'
 
-export default function companies(){
+export default function Companies(){
     const [ nome, setNome ] = useState('') 
     const [ NIPC, setNIPC] = useState('') 
     const [ morada, setmorada] = useState('') 
