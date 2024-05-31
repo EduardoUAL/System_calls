@@ -57,7 +57,7 @@ export default function Customers(){
                     <label>Nome</label>
                     <input 
                         type='text'
-                        placeholder="Nome da empresa"
+                        placeholder="Nome do Cliente"
                         value={nome}
                         onChange={(e) => setNome(e.target.value)}
                     />
