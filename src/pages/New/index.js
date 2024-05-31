@@ -27,8 +27,7 @@ export default function New(){
     const [ customers, setCustomers ] = useState([])
     const [ loadCustomer, setLoadCustomer ] = useState(true)
     const [ customerSelected, setCustomerSelected ] = useState(0)
-    const [ idCustomer, setIdCustomer ] = useState(false)
-    
+    const [ idCustomer, setIdCustomer ] = useState(false)    
 
     const { user } = useContext(AuthContext)
     const { id } = useParams()
