@@ -22,7 +22,7 @@ export default function Companies(){
     async function handleRegister(e){
         e.preventDefault()
 
-        if(nome !== '' && cc !== '' && morada !== ''){
+        if(nome !== '' && nipc !== '' && morada !== ''){
             await addDoc(collection(db, "Companies"), {
                 companyname: nome,
                 nipc: nipc,
