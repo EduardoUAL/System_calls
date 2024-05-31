@@ -66,7 +66,7 @@ export default function Companies(){
                         type='text'
                         placeholder='Introduza o seu nipc '
                         value={nipc}
-                        onChange={(e) => setcc(e.target.value)}
+                        onChange={(e) => setnipc(e.target.value)}
                     />
 
                     <label>morada</label>
