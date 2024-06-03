@@ -48,14 +48,14 @@ export default function New(){
                 snapshot.forEach((doc) => {
                     lista.push({
                         id: doc.id,
-                        nomeFantasia: doc.data().nomeFantasia
+                        NickName: doc.data().NickName
                     })
                 })
 
                 if(snapshot.docs.size === 0){
                     console.log('NENHUMA EMPRESA FOI ENCONTRADA')
                     setLoadCustomer(false)
-                    setCustomers([{id: '1', nomeFantasia: 'Freela'}])
+                    setCustomers([{id: '1', NickName: 'Freela'}])
                     return
                 }
 
@@ -67,9 +67,9 @@ export default function New(){
                 }
             })
             .catch((error) => {
-                console.log('ERRO AO BUSCAR CLIENTES', error)
+                console.log('Erro ao procurar clientes', error)
                 setLoadCustomer(false)
-                setCustomers([{id: '1', nomeFantasia: 'Freela'}])
+                setCustomers([{id: '1', NickName: 'Freela'}])
             })
         }
 
@@ -114,7 +114,7 @@ export default function New(){
         if(idCustomer){
             const docRef = doc(db, "LogTickets", id)
             await updateDoc(docRef, {
-                cliente: customers[customerSelected].nomeFantasia,
+                cliente: customers[customerSelected].NickName,
                 clienteId: customers[customerSelected].id,
                 assunto: assunto,
                 complemento: complemento,
@@ -122,13 +122,13 @@ export default function New(){
                 userId: user.uid
             })
             .then(() => {
-                toast.info("Chamado atualizado com sucesso!")
+                toast.info("Pedido atualizado com sucesso!")
                 setCustomerSelected(0)
                 setCoplemento('')
                 navigate('/dashboard')
             })
             .catch((error) => {
-                toast.error('Ops, erro ao atualizar esse chamado!')
+                toast.error('Ops, erro ao atualizar o seu Pedido!')
                 console.log(error)
             })
 
@@ -138,7 +138,7 @@ export default function New(){
         //submit a ticket
         await addDoc(collection(db, "LogTickets"), {
             created: new Date(),
-            cliente: customers[customerSelected].nomeFantasia,
+            cliente: customers[customerSelected].NickName,
             clienteId: customers[customerSelected].id,
             assunto: assunto,
             complemento: complemento,
@@ -146,12 +146,12 @@ export default function New(){
             userId: user.uid
         })
         .then(() => {
-            toast.success('Chamado registrado!')
+            toast.success('Pedido registado!')
             setCoplemento('')
             setCustomerSelected(0)
         })
         .catch((error) => {
-            toast.error('Ops erro ao registrar, tente mais tarde!')
+            toast.error('Ops erro ao registar, tente mais tarde!')
             console.log(error)
         })
     }
@@ -161,7 +161,7 @@ export default function New(){
             <Header />
 
             <div className="content">
-                <Title name={id ? "Editando chamado" : "Novo chamado"}>
+                <Title name={id ? "Editar Pedido" : "Novo Pedido"}>
                     <FiPlus size={25}/>
                 </Title>
 
@@ -170,13 +170,13 @@ export default function New(){
                         <label>Clientes</label>
                         {
                             loadCustomer ? (
-                                <input type="text" disabled={true} value="...Caregando"/>
+                                <input type="text" disabled={true} value="...A Carregar"/>
                             ) : (
                                 <select value={customerSelected} onChange={handleChangeCustomer}>
                                     {customers.map((item, index) => {
                                         return(
                                             <option key={index} value={index}>
-                                                {item.nomeFantasia}
+                                                {item.NickName}
                                             </option>
                                         )
                                     })}
@@ -228,7 +228,7 @@ export default function New(){
                             onChange={(e) => setCoplemento(e.target.value)}
                         />
 
-                        <button type="submit">Registrar</button>
+                        <button type="submit">Registar</button>
                     </form>
                 </div>
             </div>

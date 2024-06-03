@@ -32,7 +32,7 @@ export default function Customers(){
                 setNome('')
                 setcc('')
                 setmorada('')
-                toast.success('Empresa registada com sucesso!')
+                toast.success('Cliente registada com sucesso!')
             })
             .catch((error) => {
                 console.log(error)
