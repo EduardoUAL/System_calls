@@ -183,6 +183,24 @@ export default function New(){
                                 </select>
                             )
                         }
+
+                         <label>Empresa</label>
+                        {
+                            loadCustomer ? (
+                                <input type="text" disabled={true} value="...A Carregar"/>
+                            ) : (
+                                <select value={customerSelected} onChange={handleChangeCustomer}>
+                                    {customers.map((item, index) => {
+                                        return(
+                                            <option key={index} value={index}>
+                                                {item.NickName}
+                                            </option>
+                                        )
+                                    })}
+                                </select>
+                            )
+                        }
+
                         <label>Assunto</label>
                         <select value={assunto} onChange={handeChangeSelect}>
                             <option value="Suporte">Suporte</option>
