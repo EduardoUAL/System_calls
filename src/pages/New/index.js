@@ -29,6 +29,11 @@ export default function New(){
     const [ customerSelected, setCustomerSelected ] = useState(0)
     const [ idCustomer, setIdCustomer ] = useState(false)
 
+    const [ companies, setCompanies ] = useState([])
+    const [ loadCompanies, setLoadCompanies ] = useState(true)
+    const [ companiesSelected, setCompaniesSelected ] = useState(0)
+    const [ idCompanies, setIdCompanies  ] = useState(false)
+
     const { user } = useContext(AuthContext)
     const { id } = useParams()
     const navigate = useNavigate()
@@ -53,7 +58,7 @@ export default function New(){
                 })
 
                 if(snapshot.docs.size === 0){
-                    console.log('NENHUMA EMPRESA FOI ENCONTRADA')
+                    console.log('Nenhum cliente coi encontrado')
                     setLoadCustomer(false)
                     setCustomers([{id: '1', NickName: 'Freela'}])
                     return
@@ -76,6 +81,47 @@ export default function New(){
         loadCustomers()
 
     }, [id])
+
+
+    useEffect(() => {
+        async function loadCompanies(){
+            const querySnapshot = await getDocs(listRef)
+            .then((snapshot) => {
+                let lista = []
+
+                snapshot.forEach((doc) => {
+                    lista.push({
+                        id: doc.id,
+                        companyname: doc.data().companyname
+                    })
+                })
+
+                if(snapshot.docs.size === 0){
+                    console.log('NENHUMA EMPRESA FOI ENCONTRADA')
+                    setLoadCompanies(false)
+                    setCompanies([{id: '1', companyname: 'Freela'}])
+                    return
+                }
+
+                setCompanies(lista)
+                setLoadCompanies(false)
+
+                if(id) {
+                    loadId(lista)
+                }
+            })
+            .catch((error) => {
+                console.log('Erro ao procurar clientes', error)
+                setLoadCompanies(false)
+                setCompanies([{id: '1', companyname: 'Freela'}])
+            })
+        }
+
+        loadCompanies()
+
+    }, [id])
+
+
 
     async function loadId(lista){
         const docRef = doc(db, "LogTickets", id)
@@ -189,7 +235,7 @@ export default function New(){
                             loadCustomer ? (
                                 <input type="text" disabled={true} value="...A Carregar"/>
                             ) : (
-                                <select value={customerSelected} onChange={handleChangeCustomer}>
+                                <select value={customerSelected} onChange={handleChangeCompanies}>
                                     {customers.map((item, index) => {
                                         return(
                                             <option key={index} value={index}>
