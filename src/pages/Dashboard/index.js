@@ -106,7 +106,7 @@ import './dasboard.css'
         <Header />
 
         <div className="content" >
-          <Title name="Tickets">
+          <Title name="Pedidos">
             <FiMessageSquare size={25} />
           </Title>
 
@@ -150,6 +150,7 @@ import './dasboard.css'
                 <thead>
                   <tr>
                     <th scope="col">Cliente</th>
+                    <th scope="col">Empresas</th>
                     <th scope="col">Assuntos</th>
                     <th scope="col">Status</th>
                     <th scope="col">registado no</th>
@@ -162,13 +163,14 @@ import './dasboard.css'
                   return(
                     <tr key={index}>
                     <td data-label='Cliente'> {item.cliente} </td>
+                    <td data-label='Empresas'> {item.cliente} </td>
                     <td data-label='Assuntos'> {item.assunto} </td>
                     <td data-label='Status'>
                       <span className="badge" style={{backgroundColor: item.status === 'Aberto' ? '#5cb85c' : '#999' }}>
                         {item.status}
                       </span>
                     </td>
-                    <td data-label='Cadastrado'>{item.createdFormat}</td>
+                    <td data-label='Registado'>{item.createdFormat}</td>
                     <td data-label='#'>
                       <button className="action" style={{backgroundColor: '#3583f6'}} onClick={() => toogleModal(item)}>
                         <FiSearch color="#FFF" size={17}/>
