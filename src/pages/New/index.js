@@ -131,13 +131,18 @@ export default function New(){
             setStatus(snapshot.data().status)
             setCoplemento(snapshot.data().complemento)
 
-            let index = lista.findIndex(item => item.id === snapshot.data().clienteId)
+            let indexc = lista.findIndexc(item => item.id === snapshot.data().companiesID)
+            setCompaniesSelected(indexc)
+            setIdCompanies(true)
+
+            let index = lista.findIndex(item => item.id === snapshot.data().companiesID)
             setCustomerSelected(index)
             setIdCustomer(true)
         })
         .catch((error) => {
             console.log(error)
             setIdCustomer(false)
+            setIdCompanies(false)
         })
     }
 
@@ -154,14 +159,20 @@ export default function New(){
         setCustomerSelected(e.target.value)
     }
 
+    function handleChangeCompanies(e){
+        setCompaniesSelected(e.target.value)
+    }
+
     async function handleRegister(e){
         e.preventDefault()
 
-        if(idCustomer){
+        if(idCustomer, idCompanies){
             const docRef = doc(db, "LogTickets", id)
             await updateDoc(docRef, {
                 cliente: customers[customerSelected].NickName,
                 clienteId: customers[customerSelected].id,
+                companies: companies[companiesSelected].companyname,
+                companiesID: companies[companiesSelected].id,
                 assunto: assunto,
                 complemento: complemento,
                 status: status,
@@ -170,6 +181,7 @@ export default function New(){
             .then(() => {
                 toast.info("Pedido atualizado com sucesso!")
                 setCustomerSelected(0)
+                setCompaniesSelected(0)
                 setCoplemento('')
                 navigate('/dashboard')
             })
@@ -186,6 +198,8 @@ export default function New(){
             created: new Date(),
             cliente: customers[customerSelected].NickName,
             clienteId: customers[customerSelected].id,
+            companies: companies[companiesSelected].companyname,
+            companiesID: companies[companiesSelected].id,
             assunto: assunto,
             complemento: complemento,
             status: status,
@@ -195,6 +209,7 @@ export default function New(){
             toast.success('Pedido registado!')
             setCoplemento('')
             setCustomerSelected(0)
+            setCompaniesSelected(0)
         })
         .catch((error) => {
             toast.error('Ops erro ao registar, tente mais tarde!')
@@ -232,14 +247,14 @@ export default function New(){
 
                          <label>Empresa</label>
                         {
-                            loadCustomer ? (
+                            loadCompanies ? (
                                 <input type="text" disabled={true} value="...A Carregar"/>
                             ) : (
-                                <select value={customerSelected} onChange={handleChangeCompanies}>
-                                    {customers.map((item, index) => {
+                                <select value={companiesSelected} onChange={handleChangeCompanies}>
+                                    {companies.map((item, indexc) => {
                                         return(
-                                            <option key={index} value={index}>
-                                                {item.NickName}
+                                            <option key={indexc} value={indexc}>
+                                                {item.companyname}
                                             </option>
                                         )
                                     })}
