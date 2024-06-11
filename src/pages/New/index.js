@@ -43,6 +43,7 @@ export default function New(){
     const [ status, setStatus ] = useState('Aberto')
 
     const listRef = collection(db, "customers")
+    const listRefc = collection(db, "companies")
 
     useEffect(() => {
         async function loadCustomers(){
@@ -85,7 +86,7 @@ export default function New(){
 
     useEffect(() => {
         async function loadCompanies(){
-            const querySnapshot = await getDocs(listRef)
+            const querySnapshot = await getDocs(listRefc)
             .then((snapshot) => {
                 let lista = []
 
@@ -135,7 +136,7 @@ export default function New(){
             setCompaniesSelected(indexc)
             setIdCompanies(true)
 
-            let index = lista.findIndex(item => item.id === snapshot.data().companiesID)
+            let index = lista.findIndex(item => item.id === snapshot.data().customerID)
             setCustomerSelected(index)
             setIdCustomer(true)
         })
