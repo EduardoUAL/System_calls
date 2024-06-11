@@ -262,17 +262,13 @@ export default function New(){
                                 </select>
                             )
                         }
-                </form>
 
                         <label>Assunto</label>
-                        <div className="assunto"></div>
-                            <input 
-                            type='text'
-                            placeholder="Introduza o Assunto"
-                            value={assunto}
-                            onChange={(e) => setAssunto(e.target.value)}
-                            />
-                        </div>
+                        <select value={assunto} onChange={handeChangeSelect}>
+                            <option value="Suporte">Suporte</option>
+                            <option value="Visita Tecnica">Visita Tecnica</option>
+                            <option value="Financeiro">Financeiro</option>
+                        </select>
 
                         <label>Status</label>
                         <div className="status">
