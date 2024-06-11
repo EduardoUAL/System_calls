@@ -62,7 +62,7 @@ export default function Customers(){
                         onChange={(e) => setNome(e.target.value)}
                     />
 
-                    <label>cc</label>
+                    <label>CC</label>
                     <input 
                         type='text'
                         placeholder='Introduza o seu cc'
@@ -70,7 +70,7 @@ export default function Customers(){
                         onChange={(e) => setcc(e.target.value)}
                     />
 
-                    <label>morada</label>
+                    <label>Morada</label>
                     <input 
                         type='text'
                         placeholder='Introduza a sua morada'
