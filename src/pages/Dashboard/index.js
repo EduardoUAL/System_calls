@@ -123,7 +123,7 @@ import './dasboard.css'
       <Header />
       
       <div className="content">
-        <Title name="Tickets">
+        <Title name="Pedidos">
           <FiMessageSquare size={25} />
         </Title>
 
