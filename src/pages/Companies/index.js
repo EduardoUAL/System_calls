@@ -61,7 +61,7 @@ export default function Companies(){
                         onChange={(e) => setNome(e.target.value)}
                     />
 
-                    <label>nipc</label>
+                    <label>NIPC</label>
                     <input 
                         type='text'
                         placeholder='Introduza o seu nipc '
@@ -69,14 +69,13 @@ export default function Companies(){
                         onChange={(e) => setnipc(e.target.value)}
                     />
 
-                    <label>morada</label>
+                    <label>Morada</label>
                     <input 
                         type='text'
                         placeholder='Introduza a sua morada'
                         value={morada}
                         onChange={(e) => setmorada(e.target.value)}
                     />
-
                     <button type='submit'>Salvar</button>
                 </form>
             </div>
