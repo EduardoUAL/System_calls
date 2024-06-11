@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import Header from "../../components/Header";
+import  Header  from "../../components/Header";
 import Title from "../../components/Title";
 import { doc, updateDoc } from "firebase/firestore";
 import { db, storage } from "../../services/firebaseConnection";
@@ -16,12 +16,14 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 
 export default function Profile(){
-    const { user, storageUser, setUser, logout } = useContext(AuthContext)
+    const { user,storageUser, setUser, logout } = useContext(AuthContext)
     
     const [avatarUrl, setAvatarUrl] = useState(user && user.avatarUrl)
     const [nome, setNome] = useState(user && user.nome)
     const [email, setEmail] = useState(user && user.email)
     const [imageAvatar, setImageAvatar] = useState(null)
+
+    console.log(setEmail)
     
     function handleFile(e){
         if(e.target.files[0]){
@@ -45,6 +47,7 @@ export default function Profile(){
 
         await uploadBytes(uploadRef, imageAvatar)
         .then((snapShot) => {
+            
             getDownloadURL(snapShot.ref).then( async (downloadURL) => {
                 let urlFoto = downloadURL
 
@@ -73,7 +76,7 @@ export default function Profile(){
         e.preventDefault()
         
         if(imageAvatar === null && nome !== ''){
-            // Atualizar apenas o nome do usuário
+            //update only user's name
             const docRef = doc(db, "users", user.uid)
             await updateDoc(docRef, {
                 nome: nome,
@@ -81,15 +84,15 @@ export default function Profile(){
             .then(() => {
                 let data = {
                     ...user, 
-                    nome: nome
+                    nome:nome
                 }
 
                 setUser(data)
                 storageUser(data)
                 toast.success('Atualizado com sucesso!')
             })
-        } else if(nome !== '' && imageAvatar !== null){
-            // Atualizar o nome e a foto
+        } else if(nome !== '' && imageAvatar !== ''){
+            //update both the name and photo
             handleUpload()
         }
     }
@@ -117,7 +120,7 @@ export default function Profile(){
                             )}
                         </label>
 
-                        <label>Nome</label>
+                        <label>Name</label>
                         <input 
                             type="text" 
                             value={nome}
