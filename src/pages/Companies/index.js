@@ -23,7 +23,7 @@ export default function Companies(){
         e.preventDefault()
 
         if(nome !== '' && nipc !== '' && morada !== ''){
-            await addDoc(collection(db, "Companies"), {
+            await addDoc(collection(db, "companies"), {
                 companyname: nome,
                 nipc: nipc,
                 morada: morada
