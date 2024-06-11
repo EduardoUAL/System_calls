@@ -20,6 +20,12 @@ export default function Modal({ conteudo, close }){
 
                     <div className='row'>
                         <span>
+                            Empresas <i>{conteudo.empresas}</i>
+                        </span>
+                    </div>
+
+                    <div className='row'>
+                        <span>
                             Assunto: <i>{conteudo.assunto}</i>
                         </span>
                         <span>
