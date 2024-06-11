@@ -59,7 +59,7 @@ export default function New(){
                 })
 
                 if(snapshot.docs.size === 0){
-                    console.log('Nenhum cliente coi encontrado')
+                    console.log('Nenhum cliente foi encontrado')
                     setLoadCustomer(false)
                     setCustomers([{id: '1', NickName: 'Freela'}])
                     return
@@ -98,7 +98,7 @@ export default function New(){
                 })
 
                 if(snapshot.docs.size === 0){
-                    console.log('NENHUMA EMPRESA FOI ENCONTRADA')
+                    console.log('Nenhuma empresa encontrada')
                     setLoadCompanies(false)
                     setCompanies([{id: '1', companyname: 'Freela'}])
                     return
@@ -187,7 +187,7 @@ export default function New(){
                 navigate('/dashboard')
             })
             .catch((error) => {
-                toast.error('Ops, erro ao atualizar o seu Pedido!')
+                toast.error('Ops,   erro ao atualizar o seu Pedido!')
                 console.log(error)
             })
 
@@ -284,20 +284,20 @@ export default function New(){
                             <input 
                                 type="radio"
                                 name="radio"
-                                value="Progresso"
+                                value="Em Progresso"
                                 onChange={handleOptionChange}
-                                checked={status === 'Progresso'}
+                                checked={status === 'Em Progresso'}
                             />
                             <span>Progresso</span>
 
                             <input 
                                 type="radio"
                                 name="radio"
-                                value="Atendido"
+                                value="Fechado"
                                 onChange={handleOptionChange}
-                                checked={status === 'Atendido'}
+                                checked={status === 'Fechado'}
                             />
-                            <span>Atendido</span>
+                            <span>Fechado</span>
                         </div>
 
                         <label>Complemento</label>
