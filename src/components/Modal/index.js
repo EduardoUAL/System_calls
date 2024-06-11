@@ -20,7 +20,7 @@ export default function Modal({ conteudo, close }){
 
                     <div className='row'>
                         <span>
-                            Empresas <i>{conteudo.empresas}</i>
+                            Empresas <i>{conteudo.empresa}</i>
                         </span>
                     </div>
 
