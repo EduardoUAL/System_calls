@@ -264,11 +264,12 @@ export default function New(){
                         }
 
                         <label>Assunto</label>
-                        <select value={assunto} onChange={handeChangeSelect}>
-                            <option value="Suporte">Suporte</option>
-                            <option value="Visita Tecnica">Visita Tecnica</option>
-                            <option value="Financeiro">Financeiro</option>
-                        </select>
+                        <textarea 
+                            type="text" 
+                            placeholder="Indique o assunto"
+                            value={assunto}
+                            onChange={(e) => setAssunto(e.target.value)}
+                        />
 
                         <label>Status</label>
                         <div className="status">

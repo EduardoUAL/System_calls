@@ -92,7 +92,6 @@ export default function Profile(){
                 toast.success('Atualizado com sucesso!')
             })
         } else if(nome !== '' && imageAvatar !== ''){
-            //update both the name and photo
             handleUpload()
         }
     }
