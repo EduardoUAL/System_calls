@@ -39,7 +39,7 @@ export default function New(){
     const navigate = useNavigate()
 
     const [ complemento, setCoplemento ] = useState('')
-    const [ assunto, setAssunto ] = useState('Suporte')
+    const [ assunto, setAssunto ] = useState('')
     const [ status, setStatus ] = useState('Aberto')
 
     const listRef = collection(db, "customers")
