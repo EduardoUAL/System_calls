@@ -9,6 +9,7 @@ export default function SignUp(){
     const [name, setName] = useState('')
     const [email,setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
 
     const { signUp, loadingAuth } = useContext(AuthContext)
 
@@ -24,7 +25,7 @@ export default function SignUp(){
         <div className='container-center'>
             <div className='login'>
                 <div className='login-area'>    
-                    <img src={logo} alt="logo do sistemas de Pedidos" />
+                    <img src={logo} alt="logo do sistemas de Pedidos"/>
                 </div>
 
                 <form onSubmit={handleSubmit}>
