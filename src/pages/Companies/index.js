@@ -64,7 +64,7 @@ export default function Companies(){
                     <label>NIPC</label>
                     <input 
                         type='text'
-                        placeholder='Introduza o seu nipc '
+                        placeholder='Introduza o seu NIPC'
                         value={nipc}
                         onChange={(e) => setnipc(e.target.value)}
                     />
