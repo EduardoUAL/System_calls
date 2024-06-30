@@ -49,7 +49,7 @@ export default function SignIn(){
                 
                 </form>
 
-                <Link to="/register"> Quer criar uma conta? </Link>
+                <Link to="/register"> Não tem uma conta? </Link>
             </div>
         </div>
     )
