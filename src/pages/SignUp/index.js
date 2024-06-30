@@ -10,25 +10,31 @@ export default function SignUp(){
     const [email,setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+
     const [errorMessage, setErrorMessage] = useState('')
+    const [emailError, setEmailError] = useState('')
 
     const { signUp, loadingAuth } = useContext(AuthContext)
+
+    const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
     async function handleSubmit(e) {
         e.preventDefault()
         
         if(name !== '' && password !== '' &&  email !== '' && confirmPassword !== '') {
             if(password === confirmPassword) {
-                await signUp(email, password, name)
-            } else {
-                setErrorMessage('As senhas não são iguais');
-                console.log('Error message set:', errorMessage);
+                if(pattern.test(email)) {
+                    await signUp(email, password, name)
+                } else {
+                    setErrorMessage('As senhas não são iguais');
+                    console.log('Error message set:', errorMessage);
+                }
             }
-        } else {
+        else {
             setErrorMessage('Preencha todos os campos');
             console.log('Error message set:', errorMessage);
+            }
         }
-    }
 
     return(
         <div className='container-center'>
@@ -53,6 +59,7 @@ export default function SignUp(){
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
+                    {emailError && <div style={{ color:'red'}}>{emailError}</div>}
 
                     <input 
                         type='password'
@@ -80,4 +87,5 @@ export default function SignUp(){
             </div>
         </div>
     )
+}
 }
