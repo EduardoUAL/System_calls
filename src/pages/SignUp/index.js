@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/auth'
 
 import logo from '../../assets/logo.png'
 
-export default function SignUp(){
+export default function SignUp() {
     const [name, setName] = useState('')
     const [email,setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -51,6 +51,8 @@ export default function SignUp(){
             <div className='login-area'>    
               <img src={logo} alt="logo do sistemas de Pedidos"/>
             </div>
+
+            <div>{errorMessage}</div>
       
             <form onSubmit={handleSubmit}>
               <h1>Criar conta</h1>
