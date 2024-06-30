@@ -32,7 +32,6 @@ export default function Header(){
                 </li>
                 <li>    
                     <Link to="/profile">
-                        <FiSettings color="#FFF" size={24} />
                         <div className='avatar-wrapper'>
                             <img
                                 src={
