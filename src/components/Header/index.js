@@ -3,7 +3,7 @@ import { AuthContext } from '../../contexts/auth'
 import { Link } from 'react-router-dom'
 import {FiHome, FiUser, FiSettings} from 'react-icons/fi'
 
-import avatarImg from '../../assets/avatar.png'
+//import avatarImg from '../../assets/avatar.png'
 import './header.css'
 
 export default function Header(){

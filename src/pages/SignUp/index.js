@@ -16,8 +16,14 @@ export default function SignUp(){
     async function handleSubmit(e) {
         e.preventDefault()
         
-        if(name !== '' && password !== '' &&  email !== ''){
-           await signUp(email, password, name)
+        if(name !== '' && password !== '' &&  email !== '' && confirmPassword !== '') {
+            if(password === confirmPassword) {
+                await signUp(email, password, name)
+            } else {
+                alert('As senhas não são iguais');
+            }
+        } else {
+            alert('Preencha todos os campos')
         }
     }
 
