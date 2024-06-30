@@ -42,7 +42,7 @@ form h1 {
     color: #181c2e;
 }
 
-.login input {
+.login input[type="password"] {
     margin-bottom: 1rem;
     height: 35px;
     border-radius: 4px;
@@ -50,6 +50,10 @@ form h1 {
     padding: 10px;
     font-size: 15px;
     background-color: #FFF;
+}
+
+.confirm-password {
+    margin-bottom: 1rem;;
 }
 
 form button {
