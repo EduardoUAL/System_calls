@@ -18,25 +18,10 @@ export default function SignUp() {
     e.preventDefault()
     
     if(name !== '' && password !== '' &&  email !== '') {
-      if(pattern.test(email)) {
-          if(password === confirmPassword) {
-            try {
-                await signUp(email, password, name)}
-                catch (errorMessage)
-                {errorMessage('Erro ao criar conta.')}
-          } else {
-                  setErrorMessage('As senhas não são iguais.');
-          }
-      } else {
-          setErrorMessage('Email inválido.');
-          }
-  } else {
-      setErrorMessage('Preencha todos os campos');
-      }
+      await signUp(email, password, name)
+    }
   }
-
-    
-  }
+                
   return (
       <div className='container-center'>
         <div className='login'>
@@ -86,4 +71,4 @@ export default function SignUp() {
         </div>
       </div>
     )
-
+  }
