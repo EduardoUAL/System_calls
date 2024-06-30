@@ -31,14 +31,14 @@ export default function SignIn(){
                     <h1>Entrar</h1>
                     <input 
                         type='text'
-                        placeholder='email@email.com'
+                        placeholder='email'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
 
                     <input 
                         type='password'
-                        placeholder='********'
+                        placeholder='password'
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
