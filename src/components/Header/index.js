@@ -33,18 +33,20 @@ export default function Header(){
                 <li>    
                     <Link to="/profile">
                         <FiSettings color="#FFF" size={24} />
-                        Perfil
+                        <div className='avatar-wrapper'>
+                            <img
+                                src={
+                                user.avatarUrl === null 
+                                ? avatarImg
+                                : user.avatarUrl
+                            }
+                            alt="foto do usuário" 
+                            className='avatar'
+                />
+            </div>
                     </Link>
                 </li>
             </ul>
-
-            <div className='avatar-wrapper'>
-                <img 
-                    src={user.avatarUrl === null ? avatarImg: user.avatarUrl}
-                    alt="foto do usuário" 
-                    className='avatar'
-                />
-            </div>
 
             
         </nav>
