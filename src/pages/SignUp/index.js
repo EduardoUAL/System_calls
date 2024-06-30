@@ -52,7 +52,7 @@ export default function SignUp() {
               <img src={logo} alt="logo do sistemas de Pedidos"/>
             </div>
 
-            <div>{errorMessage}</div>
+            <div xpto="joana">{errorMessage}</div>
       
             <form onSubmit={handleSubmit}>
               <h1>Criar conta</h1>
