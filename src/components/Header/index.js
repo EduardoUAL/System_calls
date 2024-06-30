@@ -2,8 +2,7 @@ import { useContext } from 'react'
 import { AuthContext } from '../../contexts/auth'
 import { Link } from 'react-router-dom'
 import {FiHome, FiUser, FiSettings} from 'react-icons/fi'
-
-//import avatarImg from '../../assets/avatar.png'
+import avatarImg from '../../assets/avatar.png'
 import './header.css'
 
 export default function Header(){
@@ -31,7 +30,6 @@ export default function Header(){
                         Empresas
                     </Link>
                 </li>
-
                 <li>    
                     <Link to="/profile">
                         <FiSettings color="#FFF" size={24} />
@@ -40,14 +38,11 @@ export default function Header(){
                 </li>
             </ul>
 
-            <div>
+            <div className='avatar-wrapper'>
                 <img 
-                    src={
-                        user.avatarUrl === null 
-                        ? avatarImg 
-                        : user.avatarUrl
-                    } 
+                    src={user.avatarUrl === null ? avatarImg: user.avatarUrl}
                     alt="foto do usuário" 
+                    className='avatar'
                 />
             </div>
 
