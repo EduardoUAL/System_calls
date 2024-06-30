@@ -28,25 +28,25 @@ export default function SignUp(){
                 </div>
 
                 <form onSubmit={handleSubmit}>
-                    <h1>Nova conta</h1>
+                    <h1>Criar conta</h1>
 
                     <input 
                         type='text'
-                        placeholder='Escreva o seu nome'
+                        placeholder='Introduzir nome'
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
 
                     <input 
                         type='text'
-                        placeholder='Introduza o seu email'
+                        placeholder='Introduzir email'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
 
                     <input 
-                        type='Introduza a sua password'
-                        placeholder='********'
+                        type='text'
+                        placeholder='Password'
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
