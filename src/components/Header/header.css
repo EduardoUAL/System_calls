@@ -27,19 +27,19 @@
     margin-left: 20px;
 }
 
-.avatar {
+/*.avatar {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-}
+}*/
 
 .content{
-    margin-left: 200px;
+    margin-left: 20px;
     padding: 1px 16px;
 }
 
 @media screen and (max-width: 700px){
-    .sidebar{
+    .menu-bar{
         width:100%;
         height: auto;
         position: relative;
@@ -50,19 +50,19 @@
         margin-left: 0;
     }
 
-    .sidebar a {
+    .menu-bar a {
         /* float:left;  */
         display: inline-block;
         margin: 0.5rem;
     }
 
-    .sidebar a svg{
+    .menu-bar a svg{
         display: none;
     }
 }
 
 @media screen and (max-width:300px){
-    .sidebar a{
+    .menu-bar a{
         margin: 0.05rem;
         padding: 10px;
     }

@@ -40,10 +40,8 @@ export default function Header(){
                                 ? avatarImg
                                 : user.avatarUrl
                             }
-                            alt="foto do usuário" 
-                            className='avatar'
-                />
-            </div>
+                            alt="foto do utilizador"/>
+                        </div>
                     </Link>
                 </li>
             </ul>
