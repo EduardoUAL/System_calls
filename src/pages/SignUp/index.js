@@ -54,20 +54,13 @@ export default function SignUp() {
               onChange={(e) => setPassword(e.target.value)}
             />
     
-            <input 
-              type='password'
-              placeholder='Confirmar password'
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-    
             <button type='submit'> 
               {loadingAuth ? 'A carregar' : 'Registar'} 
             </button>
           
           </form>
     
-          <Link to="/login"> Ja tem uma conta? Faça login! </Link>
+          <Link to="/"> Ja tem uma conta? Faça login! </Link>
         </div>
       </div>
     )
