@@ -42,7 +42,7 @@ form h1 {
     color: #181c2e;
 }
 
-.login input[type="password"] {
+.login input {
     margin-bottom: 1rem;
     height: 35px;
     border-radius: 4px;
