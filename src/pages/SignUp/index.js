@@ -62,7 +62,7 @@ export default function SignUp(){
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
-                    {errorEmail && <div style={{ color:'red'}}>{errorEmail}</div>}
+      
 
                     <input 
                         type='password'
@@ -77,6 +77,8 @@ export default function SignUp(){
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                     />
+
+                    
 
                     {errorMessage && <div style={{ color:'ed'}}>{errorMessage}</div>}
 
