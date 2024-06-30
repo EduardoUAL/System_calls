@@ -51,6 +51,13 @@ export default function SignUp(){
                         onChange={(e) => setPassword(e.target.value)}
                     />
 
+                    <input 
+                        type='text'
+                        placeholder='Confirmar password'
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                    />
+
                     <button type='submit'> 
                         { loadingAuth ? 'A carregar' : 'Registar'} 
                     </button>
