@@ -55,7 +55,7 @@ function AuthProvider({children}){
        .catch((error) => {
         console.log(error)
         setLoadingAuth(false)
-        toast.error("Ops, algo correu Mal!")
+        toast.error("Ops, algo correu mal!")
        })
     }
 
