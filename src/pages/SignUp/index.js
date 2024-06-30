@@ -35,7 +35,6 @@ export default function SignUp(){
                 }
         } else {
             setErrorMessage('Preencha todos os campos');
-            console.log('Error message set:', errorMessage);
             }
         }
 
@@ -78,9 +77,6 @@ export default function SignUp(){
                         onChange={(e) => setConfirmPassword(e.target.value)}
                     />
 
-                    
-
-                    {errorMessage && <div style={{ color:'ed'}}>{errorMessage}</div>}
 
                     <button type='submit'> 
                         { loadingAuth ? 'A carregar' : 'Registar'} 
