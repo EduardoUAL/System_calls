@@ -27,11 +27,11 @@
     margin-left: 20px;
 }
 
-/*.avatar {
+.avatar {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-}*/
+}
 
 .content{
     margin-left: 20px;
@@ -62,7 +62,7 @@
 }
 
 @media screen and (max-width:300px){
-    .menu-bar a{
+    .sidebar a{
         margin: 0.05rem;
         padding: 10px;
     }
