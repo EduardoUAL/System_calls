@@ -12,15 +12,23 @@ export default function SignUp(){
     const [confirmPassword, setConfirmPassword] = useState('')
     const [errorMessage, setErrorMessage] = useState('')
 
-    const { signUp, loadingAuth } = useContext(AuthContext)
+    const {signUp, loadingAuth} = useContext(AuthContext)
 
     const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
     async function handleSubmit(e) {
+<<<<<<< HEAD
         e.preventDefault();
 
         setErrorMessage('???');
         return;
+=======
+        e.preventDefault()
+
+        if(name !== '' && password !== '' &&  email !== ''){
+            await signUp(email, password, confirmPassword, name)
+        }
+>>>>>>> 42b1919da58e5347abebaed22b1686f4c88f3860
         
         if(name !== '' && password !== '' &&  email !== '' && confirmPassword !== '') {
             if(pattern.test(email)) {
@@ -41,54 +49,54 @@ export default function SignUp(){
             }
         }
 
-    return(
+        
+    }
+    return (
         <div className='container-center'>
-            <div className='login'>
-                <div className='login-area'>    
-                    <img src={logo} alt="logo do sistemas de Pedidos"/>
-                </div>
-
-                <form onSubmit={handleSubmit}>
-                    <h1>Criar conta</h1>
-
-                    <input 
-                        type='text'
-                        placeholder='Introduzir nome'
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    />
-
-                    <input 
-                        type='text'
-                        placeholder='Introduzir email'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-      
-
-                    <input 
-                        type='password'
-                        placeholder='Password'
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-
-                    <input 
-                        type='password'
-                        placeholder='Confirmar password'
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                    />
-
-
-                    <button type='submit'> 
-                        { loadingAuth ? 'A carregar' : 'Registar'} 
-                    </button>
-                
-                </form>
-
-                <Link to="/"> Ja tem uma conta? Faça login! </Link>
+          <div className='login'>
+            <div className='login-area'>    
+              <img src={logo} alt="logo do sistemas de Pedidos"/>
             </div>
+      
+            <form onSubmit={handleSubmit}>
+              <h1>Criar conta</h1>
+      
+              <input 
+                type='text'
+                placeholder='Introduzir nome'
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+      
+              <input 
+                type='text'
+                placeholder='Introduzir email'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+      
+              <input 
+                type='password'
+                placeholder='Password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+      
+              <input 
+                type='password'
+                placeholder='Confirmar password'
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+      
+              <button type='submit'> 
+                {loadingAuth ? 'A carregar' : 'Registar'} 
+              </button>
+            
+            </form>
+      
+            <Link to="/"> Ja tem uma conta? Faça login! </Link>
+          </div>
         </div>
-    )
-}
+      )
+
