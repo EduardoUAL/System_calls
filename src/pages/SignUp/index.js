@@ -10,6 +10,7 @@ export default function SignUp(){
     const [email,setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    const [errorMessage, setErrorMessage] = useState('')
 
     const { signUp, loadingAuth } = useContext(AuthContext)
 
@@ -20,10 +21,10 @@ export default function SignUp(){
             if(password === confirmPassword) {
                 await signUp(email, password, name)
             } else {
-                alert('As senhas não são iguais');
+                setErrorMessage('As senhas não são iguais');
             }
         } else {
-            alert('Preencha todos os campos')
+            setErrorMessage('Preencha todos os campos');
         }
     }
 
@@ -64,6 +65,8 @@ export default function SignUp(){
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                     />
+
+                    {errorMessage && <div style={{ color:'ed'}}>{errorMessage}</div>}
 
                     <button type='submit'> 
                         { loadingAuth ? 'A carregar' : 'Registar'} 
