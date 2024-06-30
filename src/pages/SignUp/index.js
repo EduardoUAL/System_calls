@@ -22,9 +22,11 @@ export default function SignUp(){
                 await signUp(email, password, name)
             } else {
                 setErrorMessage('As senhas não são iguais');
+                console.log('Error message set:', errorMessage);
             }
         } else {
             setErrorMessage('Preencha todos os campos');
+            console.log('Error message set:', errorMessage);
         }
     }
 
