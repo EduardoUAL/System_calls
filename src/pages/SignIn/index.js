@@ -28,7 +28,7 @@ export default function SignIn(){
                 </div>
 
                 <form onSubmit={handleSignIn}>
-                    <h1>Entrar</h1>
+                    <h1>Login</h1>
                     <input 
                         type='text'
                         placeholder='email'
