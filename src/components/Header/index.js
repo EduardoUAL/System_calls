@@ -11,7 +11,35 @@ export default function Header(){
     const { user } = useContext(AuthContext)
 
     return(
-        <div className="sidebar">
+        <nav className="menu-bar">
+            <ul>
+                <li>
+                    <Link to="/dashboard">
+                        <FiHome color="#FFF" size={24} />
+                        Pedidos
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/customers">
+                        <FiUser color="#FFF" size={24} />
+                        Clientes
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/Companies">
+                        <FiUser color="#FFF" size={24} />
+                        Empresas
+                    </Link>
+                </li>
+
+                <li>    
+                    <Link to="/profile">
+                        <FiSettings color="#FFF" size={24} />
+                        Perfil
+                    </Link>
+                </li>
+            </ul>
+
             <div>
                 <img 
                     src={
@@ -23,25 +51,7 @@ export default function Header(){
                 />
             </div>
 
-            <Link to="/dashboard">
-                <FiHome color="#FFF" size={24} />
-                Pedidos
-            </Link>
-
-            <Link to="/customers">
-                <FiUser color="#FFF" size={24} />
-                Clientes
-            </Link>
-
-            <Link to="/Companies">
-                <FiUser color="#FFF" size={24} />
-                Empresas
-            </Link>
-
-            <Link to="/profile">
-                <FiSettings color="#FFF" size={24} />
-                Perfil
-            </Link>
-        </div>
+            
+        </nav>
     )
 }
