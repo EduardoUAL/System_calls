@@ -17,18 +17,12 @@ export default function SignUp(){
     const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
     async function handleSubmit(e) {
-<<<<<<< HEAD
-        e.preventDefault();
 
-        setErrorMessage('???');
-        return;
-=======
         e.preventDefault()
 
         if(name !== '' && password !== '' &&  email !== ''){
             await signUp(email, password, confirmPassword, name)
         }
->>>>>>> 42b1919da58e5347abebaed22b1686f4c88f3860
         
         if(name !== '' && password !== '' &&  email !== '' && confirmPassword !== '') {
             if(pattern.test(email)) {
