@@ -17,14 +17,17 @@ export default function SignUp(){
     const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
     async function handleSubmit(e) {
-        e.preventDefault()
+        e.preventDefault();
+
+        setErrorMessage('???');
+        return;
         
         if(name !== '' && password !== '' &&  email !== '' && confirmPassword !== '') {
             if(pattern.test(email)) {
                 if(password === confirmPassword) {
                     try {
                         await signUp(email, password, name)
-                    } catch (error) {
+                    } catch (errorMessage) {
                         setErrorMessage('Erro ao criar conta.')
                     }
                 } else {
