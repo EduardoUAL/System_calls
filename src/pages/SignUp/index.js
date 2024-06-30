@@ -17,12 +17,7 @@ export default function SignUp() {
     const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
     async function handleSubmit(e) {
-
         e.preventDefault()
-
-        if(name !== '' && password !== '' &&  email !== ''){
-            await signUp(email, password, confirmPassword, name)
-        }
         
         if(name !== '' && password !== '' &&  email !== '' && confirmPassword !== '') {
             if(pattern.test(email)) {
@@ -52,8 +47,7 @@ export default function SignUp() {
               <img src={logo} alt="logo do sistemas de Pedidos"/>
             </div>
 
-            <div xpto="joana">{errorMessage}</div>
-      
+                
             <form onSubmit={handleSubmit}>
               <h1>Criar conta</h1>
       
