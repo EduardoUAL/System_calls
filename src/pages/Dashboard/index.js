@@ -185,7 +185,7 @@ import './dasboard.css'
                 </tbody>
               </table>
               
-              {loadingMore && <h3> Á procura de Pedidos... </h3>}
+              {loadingMore && <h3> A carregar mais pedidos </h3>}
               {!loadingMore && !isEmpty && <button className="btn-more" onClick={handleMore}> Procurar mais </button>}
               
             </>

@@ -280,7 +280,7 @@ export default function New(){
                                 onChange={handleOptionChange}
                                 checked={status === 'Aberto'}
                             />
-                            <span>Em Aberto</span>
+                            <span>Aberto</span>
 
                             <input 
                                 type="radio"
@@ -289,7 +289,7 @@ export default function New(){
                                 onChange={handleOptionChange}
                                 checked={status === 'Em Progresso'}
                             />
-                            <span>Progresso</span>
+                            <span>Em progresso</span>
 
                             <input 
                                 type="radio"
@@ -309,7 +309,7 @@ export default function New(){
                             onChange={(e) => setCoplemento(e.target.value)}
                         />
 
-                        <button type="submit">Registar</button>
+                        <button type="submit">Adicionar</button>
                     </form>
                 </div>
             </div>

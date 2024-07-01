@@ -11,7 +11,7 @@ export default function Modal({ conteudo, close }){
                 </button>
 
                 <main>
-                    <h2>Detalhes do Pedido </h2>
+                    <h2>Detalhes do pedido </h2>
                     <div className='row'>
                         <span>
                             Cliente: <i>{conteudo.cliente}</i>
@@ -20,7 +20,7 @@ export default function Modal({ conteudo, close }){
 
                     <div className='row'>
                         <span>
-                            Empresas <i>{conteudo.companies}</i>
+                            Empresa: <i>{conteudo.companies}</i>
                         </span>
                     </div>
 
@@ -29,7 +29,7 @@ export default function Modal({ conteudo, close }){
                             Assunto: <i>{conteudo.assunto}</i>
                         </span>
                         <span>
-                            Registado no: <i>{conteudo.createdFormat}</i>
+                            Registado em: <i>{conteudo.createdFormat}</i>
                         </span>
                     </div>
 
