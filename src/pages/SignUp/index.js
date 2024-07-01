@@ -60,7 +60,7 @@ export default function SignUp() {
           
           </form>
     
-          <Link to="/"> Ja tem uma conta? Faça login! </Link>
+          <Link to="/login"> Ja tem uma conta? Faça login! </Link>
         </div>
       </div>
     )
