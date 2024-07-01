@@ -44,8 +44,7 @@ export default function Companies(){
     }
     return(
         <div>
-            <Header />
-
+            <Header/>
             <div className='content'>
                 <Title name = "Empresas">
                    <FiUser size={25} />
