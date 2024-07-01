@@ -89,7 +89,7 @@ function AuthProvider({children}){
         .catch((error) => {
             console.log(error)
             setLoadingAuth(false)
-            toast.error("Ops, algo de errado não está certo!")
+            toast.error("Introduza um endereço de email válido.")
         })
     }
 
