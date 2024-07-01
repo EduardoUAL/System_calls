@@ -89,7 +89,7 @@ function AuthProvider({children}){
         .catch((error) => {
             console.log(error)
             setLoadingAuth(false)
-            toast.error("Ops, algo correu mal!")
+            toast.error("Ops, algo de errado não está certo!")
         })
     }
 
