@@ -89,7 +89,7 @@ function AuthProvider({children}){
         .catch((error) => {
             console.log(error)
             setLoadingAuth(false)
-            toast.error("Introduza um endereço de email válido.")
+            toast.error("Introduza um endereço de email válido ou uma password com 6 digitos.")
         })
     }
 

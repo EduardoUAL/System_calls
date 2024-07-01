@@ -47,7 +47,7 @@ export default function SignUp() {
     
             <input 
               type='password'
-              placeholder='Password'
+              placeholder='Password (Com no minimo 6 numeros)'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
