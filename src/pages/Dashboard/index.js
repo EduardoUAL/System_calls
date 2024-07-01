@@ -111,7 +111,7 @@ import './dasboard.css'
           </Title>
 
           <div className="container dashboard">
-            <span>A carregar mais pedidos.</span>
+            <span>A carregar mais pedidos</span>
           </div>
         </div>
       </div>

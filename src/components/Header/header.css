@@ -68,6 +68,7 @@
 
     .menu-bar a svg{
         display: none;
+        margin-right: 5px;
     }
 }
 
