@@ -111,7 +111,7 @@ import './dasboard.css'
           </Title>
 
           <div className="container dashboard">
-            <span>À Procurar Pedidos...</span>
+            <span>A carregar mais pedidos.</span>
           </div>
         </div>
       </div>
@@ -150,10 +150,10 @@ import './dasboard.css'
                 <thead>
                   <tr>
                     <th scope="col">Cliente</th>
-                    <th scope="col">Empresas</th>
-                    <th scope="col">Assuntos</th>
+                    <th scope="col">Empresa</th>
+                    <th scope="col">Assunto</th>
                     <th scope="col">Status</th>
-                    <th scope="col">registado no</th>
+                    <th scope="col">Registado em</th>
                     <th scope="col">#</th>
                   </tr>
                 </thead>
