@@ -131,7 +131,7 @@ import './dasboard.css'
          
           { Pedidos.length === 0 ? (
             <div className="container dashboard">
-              <span>Nenhum Pedido encontrado...</span>
+              <span>Nenhum pedido encontrado...</span>
 
               <Link to="/new" className="new">
                 <FiPlus size={25} color="#FFF"/>
