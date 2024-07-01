@@ -12,8 +12,6 @@ export default function SignUp() {
   
   const {signUp, loadingAuth} = useContext(AuthContext)
 
-  const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-
   async function handleSubmit(e) {
     e.preventDefault()
     
