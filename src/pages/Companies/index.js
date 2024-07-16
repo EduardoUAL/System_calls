@@ -18,20 +18,23 @@ export default function Companies(){
     const [ nome, setNome ] = useState('') 
     const [ nipc, setnipc] = useState('') 
     const [ morada, setmorada] = useState('') 
+    const [ funcao, setfuncao] = useState('')
 
     async function handleRegister(e){
         e.preventDefault()
 
-        if(nome !== '' && nipc !== '' && morada !== ''){
+        if(nome !== '' && nipc !== '' && morada !== '' && funcao !== ''){
             await addDoc(collection(db, "companies"), {
                 companyname: nome,
                 nipc: nipc,
-                morada: morada
+                morada: morada,
+                funcao: funcao
             })
             .then(() => {
                 setNome('')
                 setnipc('')
                 setmorada('')
+                setfuncao('')
                 toast.success('Empresa registada com sucesso!')
             })
             .catch((error) => {
@@ -74,6 +77,14 @@ export default function Companies(){
                         placeholder='Introduza a sua morada'
                         value={morada}
                         onChange={(e) => setmorada(e.target.value)}
+                    />
+
+                    <label>Função</label>
+                    <input 
+                        type='text'
+                        placeholder='Introduza a Função desempenhada'
+                        value={funcao}
+                        onChange={(e) => setfuncao(e.target.value)}
                     />
                     <button type='submit'>Salvar</button>
                 </form>
