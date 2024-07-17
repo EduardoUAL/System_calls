@@ -208,6 +208,7 @@ export default function New(){
             setAssunto('')
             setCustomerSelected(0)
             setCompaniesSelected(0)
+            navigate('/dashboard')
         })
         .catch((error) => {
             toast.error('Ops erro ao registar, tente mais tarde!')
