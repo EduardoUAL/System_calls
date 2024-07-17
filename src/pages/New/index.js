@@ -1,105 +1,169 @@
-import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import Header from "../../components/Header";
-import Title from "../../components/Title";
-import { FiPlus } from "react-icons/fi";
-import { addDoc, collection, doc, getDoc, getDocs, updateDoc } from "firebase/firestore";
-import { db } from "../../services/firebaseConnection";
-import { AuthContext } from "../../contexts/auth";
-import { toast } from "react-toastify";
-import './new.css';
+import { useContext, useEffect, useState } from "react"
 
-export default function New() {
-    const [customers, setCustomers] = useState([]);
-    const [loadCustomer, setLoadCustomer] = useState(true);
-    const [customerSelected, setCustomerSelected] = useState(0);
-    const [idCustomer, setIdCustomer] = useState(false);
+//--React Router Dom --
+import { useNavigate, useParams } from "react-router-dom"
 
-    const [companies, setCompanies] = useState([]);
-    const [loadCompanies, setLoadCompanies] = useState(true);
-    const [companiesSelected, setCompaniesSelected] = useState(0);
-    const [idCompanies, setIdCompanies] = useState(false);
+//--- Components --- 
+import Header from "../../components/Header"
+import Title from "../../components/Title"
 
-    const { user } = useContext(AuthContext);
-    const { id } = useParams();
-    const navigate = useNavigate();
+//--- React Icons ---
+import { FiPlus } from "react-icons/fi"
 
-    const [complemento, setCoplemento] = useState('');
-    const [assunto, setAssunto] = useState('');
-    const [status, setStatus] = useState('Aberto');
+//--- Firebase ------
+import { addDoc, collection, doc, getDoc, getDocs, updateDoc } from "firebase/firestore"
+import { db } from "../../services/firebaseConnection"
+
+// --- contexts ----
+import { AuthContext } from "../../contexts/auth"
+
+//--- Toast ----
+import { toast } from "react-toastify"
+
+import './new.css'
+
+export default function New(){
+
+    const [ customers, setCustomers ] = useState([])
+    const [ loadCustomer, setLoadCustomer ] = useState(true)
+    const [ customerSelected, setCustomerSelected ] = useState(0)
+    const [ idCustomer, setIdCustomer ] = useState(false)
+
+    const [ companies, setCompanies ] = useState([])
+    const [ loadCompanies, setLoadCompanies ] = useState(true)
+    const [ companiesSelected, setCompaniesSelected ] = useState(0)
+    const [ idCompanies, setIdCompanies  ] = useState(false)
+
+    const { user } = useContext(AuthContext)
+    const { id } = useParams()
+    const navigate = useNavigate()
+
+    const [ complemento, setCoplemento ] = useState('')
+    const [ assunto, setAssunto ] = useState('')
+    const [ status, setStatus ] = useState('Aberto')
+
+    const listRef = collection(db, "customers")
+    const listRefc = collection(db, "companies")
 
     useEffect(() => {
-        async function loadCustomers() {
-            const querySnapshot = await getDocs(collection(db, "customers"));
-            let lista = [];
-            querySnapshot.forEach((doc) => {
-                lista.push({
-                    id: doc.id,
-                    NickName: doc.data().NickName
-                });
-            });
-            setCustomers(lista);
-            setLoadCustomer(false);
+        async function loadCustomers(){
+            const querySnapshot = await getDocs(listRef)
+            .then((snapshot) => {
+                let lista = []
+
+                snapshot.forEach((doc) => {
+                    lista.push({
+                        id: doc.id,
+                        NickName: doc.data().NickName
+                    })
+                })
+
+                if(snapshot.docs.size === 0){
+                    console.log('Nenhum cliente foi encontrado')
+                    setLoadCustomer(false)
+                    setCustomers([{id: '1', NickName: 'Freela'}])
+                    return
+                }
+
+                setCustomers(lista)
+                setLoadCustomer(false)
+
+                if(id) {
+                    loadId(lista)
+                }
+            })
+            .catch((error) => {
+                console.log('Erro ao procurar clientes', error)
+                setLoadCustomer(false)
+                setCustomers([{id: '1', NickName: 'Freela'}])
+            })
         }
 
-        async function loadCompanies() {
-            const querySnapshot = await getDocs(collection(db, "companies"));
-            let lista = [];
-            querySnapshot.forEach((doc) => {
-                lista.push({
-                    id: doc.id,
-                    companyname: doc.data().companyname
-                });
-            });
-            setCompanies(lista);
-            setLoadCompanies(false);
+        loadCustomers()
+
+    }, [id])
+
+
+    useEffect(() => {
+        async function loadCompanies(){
+            const querySnapshot = await getDocs(listRefc)
+            .then((snapshot) => {
+                let lista = []
+
+                snapshot.forEach((doc) => {
+                    lista.push({
+                        id: doc.id,
+                        companyname: doc.data().companyname
+                    })
+                })
+
+                if(snapshot.docs.size === 0){
+                    console.log('Nenhuma empresa encontrada')
+                    setLoadCompanies(false)
+                    setCompanies([{id: '1', companyname: 'Freela'}])
+                    return
+                }
+
+                setCompanies(lista)
+                setLoadCompanies(false)
+
+                if(id) {
+                    loadId(lista)
+                }
+            })
+            .catch((error) => {
+                console.log('Erro ao procurar clientes', error)
+                setLoadCompanies(false)
+                setCompanies([{id: '1', companyname: 'Freela'}])
+            })
         }
 
-        async function loadTicketById(ticketId) {
-            const docRef = doc(db, "LogTickets", ticketId);
-            const snapshot = await getDoc(docRef);
-            if (snapshot.exists()) {
-                setAssunto(snapshot.data().assunto);
-                setStatus(snapshot.data().status);
-                setCoplemento(snapshot.data().complemento);
-                
-                let customerIndex = customers.findIndex(item => item.id === snapshot.data().clienteId);
-                setCustomerSelected(customerIndex);
-                setIdCustomer(true);
-                
-                let companyIndex = companies.findIndex(item => item.id === snapshot.data().companiesID);
-                setCompaniesSelected(companyIndex);
-                setIdCompanies(true);
-            } else {
-                console.log("No such document!");
-            }
-        }
+        loadCompanies()
 
-        loadCustomers();
-        loadCompanies();
+    }, [id])
 
-        if (id) {
-            loadTicketById(id);
-        }
-    }, [id]);
 
-    function handleOptionChange(e) {
-        setStatus(e.target.value);
+
+    async function loadId(lista){
+        const docRef = doc(db, "LogTickets", id)
+        await getDoc(docRef)
+        .then((snapshot) => {
+            setAssunto(snapshot.data().assunto)
+            setStatus(snapshot.data().status)
+            setCoplemento(snapshot.data().complemento)
+
+            let indexc = lista.findIndexc(item => item.id === snapshot.data().companiesID)
+            setCompaniesSelected(indexc)
+            setIdCompanies(true)
+
+            let index = lista.findIndex(item => item.id === snapshot.data().customerID)
+            setCustomerSelected(index)
+            setIdCustomer(true)
+        })
+        .catch((error) => {
+            console.log(error)
+            setIdCustomer(false)
+            setIdCompanies(false)
+        })
     }
 
-    function handleChangeCustomer(e) {
-        setCustomerSelected(e.target.value);
+    function handleOptionChange(e){
+        setStatus(e.target.value)
     }
 
-    function handleChangeCompanies(e) {
-        setCompaniesSelected(e.target.value);
+    function handleChangeCustomer(e){
+        setCustomerSelected(e.target.value)
     }
 
-    async function handleRegister(e) {
-        e.preventDefault();
+    function handleChangeCompanies(e){
+        setCompaniesSelected(e.target.value)
+    }
 
-        if (idCustomer, idCompanies) {
-            const docRef = doc(db, "LogTickets", id);
+    async function handleRegister(e){
+        e.preventDefault()
+
+        if(idCustomer, idCompanies){
+            const docRef = doc(db, "LogTickets", id)
             await updateDoc(docRef, {
                 cliente: customers[customerSelected].NickName,
                 clienteId: customers[customerSelected].id,
@@ -111,20 +175,22 @@ export default function New() {
                 userId: user.uid
             })
             .then(() => {
-                toast.info("Pedido atualizado com sucesso!");
-                setCustomerSelected(0);
-                setCompaniesSelected(0);
-                setAssunto('');
-                setCoplemento('');
-                navigate('/dashboard');
+                toast.info("Pedido atualizado com sucesso!")
+                setCustomerSelected(0)
+                setCompaniesSelected(0)
+                setAssunto('')
+                setCoplemento('')
+                navigate('/dashboard')
             })
             .catch((error) => {
-                toast.error('Ops, erro ao atualizar o seu Pedido!');
-                console.log(error);
-            });
-            return;
+                toast.error('Ops, erro ao atualizar o seu Pedido!')
+                console.log(error)
+            })
+
+            return
         }
 
+        //submit a ticket
         await addDoc(collection(db, "LogTickets"), {
             created: new Date(),
             cliente: customers[customerSelected].NickName,
@@ -137,52 +203,62 @@ export default function New() {
             userId: user.uid
         })
         .then(() => {
-            toast.success('Pedido registado!');
-            setCoplemento('');
-            setAssunto('');
-            setCustomerSelected(0);
-            setCompaniesSelected(0);
+            toast.success('Pedido registado!')
+            setCoplemento('')
+            setAssunto('')
+            setCustomerSelected(0)
+            setCompaniesSelected(0)
         })
         .catch((error) => {
-            toast.error('Ops erro ao registar, tente mais tarde!');
-            console.log(error);
-        });
+            toast.error('Ops erro ao registar, tente mais tarde!')
+            console.log(error)
+        })
     }
 
-    return (
+    return(
         <div>
             <Header />
+
             <div className="content">
                 <Title name={id ? "Editar Pedido" : "Novo Pedido"}>
                     <FiPlus size={25}/>
                 </Title>
+
                 <div className="container">
                     <form className="form-profile" onSubmit={handleRegister}>
                         <label>Clientes</label>
-                        {loadCustomer ? (
-                            <input type="text" disabled={true} value="...A Carregar"/>
-                        ) : (
-                            <select value={customerSelected} onChange={handleChangeCustomer}>
-                                {customers.map((item, index) => (
-                                    <option key={index} value={index}>
-                                        {item.NickName}
-                                    </option>
-                                ))}
-                            </select>
-                        )}
+                        {
+                            loadCustomer ? (
+                                <input type="text" disabled={true} value="...A Carregar"/>
+                            ) : (
+                                <select value={customerSelected} onChange={handleChangeCustomer}>
+                                    {customers.map((item, index) => {
+                                        return(
+                                            <option key={index} value={index}>
+                                                {item.NickName}
+                                            </option>
+                                        )
+                                    })}
+                                </select>
+                            )
+                        }
 
-                        <label>Empresa</label>
-                        {loadCompanies ? (
-                            <input type="text" disabled={true} value="...A Carregar"/>
-                        ) : (
-                            <select value={companiesSelected} onChange={handleChangeCompanies}>
-                                {companies.map((item, index) => (
-                                    <option key={index} value={index}>
-                                        {item.companyname}
-                                    </option>
-                                ))}
-                            </select>
-                        )}
+                         <label>Empresa</label>
+                        {
+                            loadCompanies ? (
+                                <input type="text" disabled={true} value="...A Carregar"/>
+                            ) : (
+                                <select value={companiesSelected} onChange={handleChangeCompanies}>
+                                    {companies.map((item, indexc) => {
+                                        return(
+                                            <option key={indexc} value={indexc}>
+                                                {item.companyname}
+                                            </option>
+                                        )
+                                    })}
+                                </select>
+                            )
+                        }
 
                         <label>Assunto</label>
                         <textarea 
@@ -235,5 +311,5 @@ export default function New() {
                 </div>
             </div>
         </div>
-    );
+    )
 }
