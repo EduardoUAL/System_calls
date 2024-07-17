@@ -178,11 +178,12 @@ export default function New(){
                 toast.info("Pedido atualizado com sucesso!")
                 setCustomerSelected(0)
                 setCompaniesSelected(0)
+                setAssunto('')
                 setCoplemento('')
                 navigate('/dashboard')
             })
             .catch((error) => {
-                toast.error('Ops,   erro ao atualizar o seu Pedido!')
+                toast.error('Ops, erro ao atualizar o seu Pedido!')
                 console.log(error)
             })
 
