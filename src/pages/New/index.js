@@ -161,14 +161,14 @@ export default function New(){
 
     async function handleRegister(e){
         e.preventDefault()
-
-        if(idCustomer, idCompanies){
+    
+        if (idCustomer && idCompanies) {
             const docRef = doc(db, "LogTickets", id)
             await updateDoc(docRef, {
-                cliente: customers[customerSelected].NickName,
-                clienteId: customers[customerSelected].id,
-                companies: companies[companiesSelected].companyname,
-                companiesID: companies[companiesSelected].id,
+                cliente: customers[customerSelected]?.NickName,
+                clienteId: customers[customerSelected]?.id,
+                companies: companies[companiesSelected]?.companyname,
+                companiesID: companies[companiesSelected]?.id,
                 assunto: assunto,
                 complemento: complemento,
                 status: status,
@@ -179,24 +179,24 @@ export default function New(){
                 setCustomerSelected(0)
                 setCompaniesSelected(0)
                 setAssunto('')
-                setcomplemento('')
+                setComplemento('')
                 navigate('/dashboard')
             })
             .catch((error) => {
                 toast.error('Ops, erro ao atualizar o seu Pedido!')
                 console.log(error)
             })
-
+    
             return
         }
-
+    
         //submit a ticket
         await addDoc(collection(db, "LogTickets"), {
             created: new Date(),
-            cliente: customers[customerSelected].NickName,
-            clienteId: customers[customerSelected].id,
-            companies: companies[companiesSelected].companyname,
-            companiesID: companies[companiesSelected].id,
+            cliente: customers[customerSelected]?.NickName,
+            clienteId: customers[customerSelected]?.id,
+            companies: companies[companiesSelected]?.companyname,
+            companiesID: companies[companiesSelected]?.id,
             assunto: assunto,
             complemento: complemento,
             status: status,
@@ -204,7 +204,7 @@ export default function New(){
         })
         .then(() => {
             toast.success('Pedido registado!')
-            setcomplemento('')
+            setComplemento('')
             setAssunto('')
             setCustomerSelected(0)
             setCompaniesSelected(0)
@@ -213,6 +213,8 @@ export default function New(){
             toast.error('Ops erro ao registar, tente mais tarde!')
             console.log(error)
         })
+    }
+    
     }
 
     return(
