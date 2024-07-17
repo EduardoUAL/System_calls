@@ -167,8 +167,6 @@ export default function New(){
             await updateDoc(docRef, {
                 cliente: customers[customerSelected].NickName,
                 clienteId: customers[customerSelected].id,
-                companies: companies[companiesSelected].companyname,
-                companiesID: companies[companiesSelected].id,
                 assunto: assunto,
                 complemento: complemento,
                 status: status,
@@ -177,7 +175,6 @@ export default function New(){
             .then(() => {
                 toast.info("Pedido atualizado com sucesso!")
                 setCustomerSelected(0)
-                setCompaniesSelected(0)
                 setAssunto('')
                 setcomplemento('')
                 navigate('/dashboard')
