@@ -205,6 +205,7 @@ export default function New(){
         .then(() => {
             toast.success('Pedido registado!')
             setCoplemento('')
+            setAssunto('')
             setCustomerSelected(0)
             setCompaniesSelected(0)
         })
