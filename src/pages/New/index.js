@@ -41,6 +41,7 @@ export default function New() {
             setCustomers(lista);
             setLoadCustomer(false);
         }
+
         async function loadCompanies() {
             const querySnapshot = await getDocs(collection(db, "companies"));
             let lista = [];
@@ -54,6 +55,26 @@ export default function New() {
             setLoadCompanies(false);
         }
 
+        async function loadTicketById(ticketId) {
+            const docRef = doc(db, "LogTickets", ticketId);
+            const snapshot = await getDoc(docRef);
+            if (snapshot.exists()) {
+                setAssunto(snapshot.data().assunto);
+                setStatus(snapshot.data().status);
+                setCoplemento(snapshot.data().complemento);
+                
+                let customerIndex = customers.findIndex(item => item.id === snapshot.data().clienteId);
+                setCustomerSelected(customerIndex);
+                setIdCustomer(true);
+                
+                let companyIndex = companies.findIndex(item => item.id === snapshot.data().companiesID);
+                setCompaniesSelected(companyIndex);
+                setIdCompanies(true);
+            } else {
+                console.log("No such document!");
+            }
+        }
+
         loadCustomers();
         loadCompanies();
 
@@ -61,24 +82,6 @@ export default function New() {
             loadTicketById(id);
         }
     }, [id]);
-
-    async function loadTicketById(ticketId) {
-        const docRef = doc(db, "LogTickets", ticketId);
-        const snapshot = await getDoc(docRef);
-        if (snapshot.exists()) {
-            setAssunto(snapshot.data().assunto);
-            setStatus(snapshot.data().status);
-            setCoplemento(snapshot.data().complemento);
-            let customerIndex = customers.findIndex(item => item.id === snapshot.data().clienteId);
-            setCustomerSelected(customerIndex);
-            setIdCustomer(true);
-            let companyIndex = companies.findIndex(item => item.id === snapshot.data().companiesID);
-            setCompaniesSelected(companyIndex);
-            setIdCompanies(true);
-        } else {
-            console.log("No such document!");
-        }
-    }
 
     function handleOptionChange(e) {
         setStatus(e.target.value);
@@ -95,7 +98,7 @@ export default function New() {
     async function handleRegister(e) {
         e.preventDefault();
 
-        if (idCustomer && idCompanies) {
+        if (idCustomer && idCompanies && id) {
             const docRef = doc(db, "LogTickets", id);
             await updateDoc(docRef, {
                 cliente: customers[customerSelected].NickName,
@@ -160,13 +163,11 @@ export default function New() {
                             <input type="text" disabled={true} value="...A Carregar"/>
                         ) : (
                             <select value={customerSelected} onChange={handleChangeCustomer}>
-                                {customers.map((item, index) => {
-                                    return (
-                                        <option key={index} value={index}>
-                                            {item.NickName}
-                                        </option>
-                                    );
-                                })}
+                                {customers.map((item, index) => (
+                                    <option key={index} value={index}>
+                                        {item.NickName}
+                                    </option>
+                                ))}
                             </select>
                         )}
 
@@ -175,13 +176,11 @@ export default function New() {
                             <input type="text" disabled={true} value="...A Carregar"/>
                         ) : (
                             <select value={companiesSelected} onChange={handleChangeCompanies}>
-                                {companies.map((item, index) => {
-                                    return (
-                                        <option key={index} value={index}>
-                                            {item.companyname}
-                                        </option>
-                                    );
-                                })}
+                                {companies.map((item, index) => (
+                                    <option key={index} value={index}>
+                                        {item.companyname}
+                                    </option>
+                                ))}
                             </select>
                         )}
 
