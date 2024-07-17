@@ -151,11 +151,6 @@ export default function New(){
         setStatus(e.target.value)
     }
 
-    function handeChangeSelect(e){
-        setAssunto(e.target.value)
-        
-    }
-
     function handleChangeCustomer(e){
         setCustomerSelected(e.target.value)
     }
