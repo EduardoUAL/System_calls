@@ -38,7 +38,7 @@ export default function New(){
     const { id } = useParams()
     const navigate = useNavigate()
 
-    const [ complemento, setCoplemento ] = useState('')
+    const [ complemento, setcomplemento ] = useState('')
     const [ assunto, setAssunto ] = useState('')
     const [ status, setStatus ] = useState('Aberto')
 
@@ -130,7 +130,7 @@ export default function New(){
         .then((snapshot) => {
             setAssunto(snapshot.data().assunto)
             setStatus(snapshot.data().status)
-            setCoplemento(snapshot.data().complemento)
+            setcomplemento(snapshot.data().complemento)
 
             let indexc = lista.findIndex(item => item.id === snapshot.data().companiesID)
             setCompaniesSelected(indexc)
@@ -179,7 +179,7 @@ export default function New(){
                 setCustomerSelected(0)
                 setCompaniesSelected(0)
                 setAssunto('')
-                setCoplemento('')
+                setcomplemento('')
                 navigate('/dashboard')
             })
             .catch((error) => {
@@ -204,7 +204,7 @@ export default function New(){
         })
         .then(() => {
             toast.success('Pedido registado!')
-            setCoplemento('')
+            setcomplemento('')
             setAssunto('')
             setCustomerSelected(0)
             setCompaniesSelected(0)
@@ -303,7 +303,7 @@ export default function New(){
                             type="text" 
                             placeholder="Descreva seu problema (opcional)"
                             value={complemento}
-                            onChange={(e) => setCoplemento(e.target.value)}
+                            onChange={(e) => setcomplemento(e.target.value)}
                         />
 
                         <button type="submit">Adicionar</button>
