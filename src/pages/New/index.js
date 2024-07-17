@@ -152,21 +152,23 @@ export default function New(){
     }
 
     function handleChangeCustomer(e){
-        setCustomerSelected(e.target.value)
+        setCustomerSelected(parseInt(e.target.value))
     }
 
     function handleChangeCompanies(e){
-        setCompaniesSelected(e.target.value)
+        setCompaniesSelected(parseInt(e.target.value))
     }
 
     async function handleRegister(e){
         e.preventDefault()
 
-        if(idCustomer){
+        if(idCustomer, idCompanies){
             const docRef = doc(db, "LogTickets", id)
             await updateDoc(docRef, {
                 cliente: customers[customerSelected].NickName,
                 clienteId: customers[customerSelected].id,
+                companies: companies[companiesSelected].companyname,
+                companiesID: companies[companiesSelected].id,
                 assunto: assunto,
                 complemento: complemento,
                 status: status,
@@ -175,6 +177,7 @@ export default function New(){
             .then(() => {
                 toast.info("Pedido atualizado com sucesso!")
                 setCustomerSelected(0)
+                setCompaniesSelected(0)
                 setAssunto('')
                 setcomplemento('')
                 navigate('/dashboard')
