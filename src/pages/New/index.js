@@ -132,7 +132,7 @@ export default function New(){
             setStatus(snapshot.data().status)
             setCoplemento(snapshot.data().complemento)
 
-            let indexc = lista.findIndexc(item => item.id === snapshot.data().companiesID)
+            let indexc = lista.findIndex(item => item.id === snapshot.data().companiesID)
             setCompaniesSelected(indexc)
             setIdCompanies(true)
 
