@@ -98,7 +98,7 @@ export default function New() {
     async function handleRegister(e) {
         e.preventDefault();
 
-        if (idCustomer && idCompanies && id) {
+        if (idCustomer && idCompanies) {
             const docRef = doc(db, "LogTickets", id);
             await updateDoc(docRef, {
                 cliente: customers[customerSelected].NickName,
