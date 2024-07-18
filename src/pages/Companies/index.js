@@ -20,6 +20,8 @@ export default function Companies(){
     const [ morada, setmorada] = useState('') 
     const [ funcao, setfuncao] = useState('')
 
+    const navigate = useNavigate()
+
     async function handleRegister(e){
         e.preventDefault()
 
@@ -36,6 +38,7 @@ export default function Companies(){
                 setmorada('')
                 setfuncao('')
                 toast.success('Empresa registada com sucesso!')
+                navigate('/dashboard')
             })
             .catch((error) => {
                 console.log(error)
@@ -87,6 +90,7 @@ export default function Companies(){
                         onChange={(e) => setfuncao(e.target.value)}
                     />
                     <button type='submit'>Salvar</button>
+                     
                 </form>
             </div>
             </div>

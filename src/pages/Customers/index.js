@@ -19,6 +19,8 @@ export default function Customers(){
     const [ cc, setcc] = useState('') 
     const [ morada, setmorada] = useState('') 
 
+    const navigate = useNavigate()
+
     async function handleRegister(e){
         e.preventDefault()
 
@@ -33,6 +35,7 @@ export default function Customers(){
                 setcc('')
                 setmorada('')
                 toast.success('Cliente registado com sucesso!')
+                navigate('/dashboard')
             })
             .catch((error) => {
                 console.log(error)
