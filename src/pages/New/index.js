@@ -165,7 +165,6 @@ export default function New(){
         if(idCompanies){
             const docRef = doc(db, "LogTickets", id)
             await updateDoc(docRef, {
-                cliente: customers[customerSelected].NickName,
                 clienteId: customers[customerSelected].id,
                 companies: companies[companiesSelected].companyname,
                 companiesID: companies[companiesSelected].id,
