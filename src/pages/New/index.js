@@ -132,7 +132,7 @@ export default function New(){
             setStatus(snapshot.data().status)
             setcomplemento(snapshot.data().complemento)
 
-            let indexc = lista.findIndexc(item => item.id === snapshot.data().companiesID)
+            let indexc = lista.findIndex(item => item.id === snapshot.data().companiesID)
             setCompaniesSelected(indexc)
             setIdCompanies(true)
 
@@ -162,7 +162,7 @@ export default function New(){
     async function handleRegister(e){
         e.preventDefault()
 
-        if(idCustomer, idCompanies){
+        if(idCompanies){
             const docRef = doc(db, "LogTickets", id)
             await updateDoc(docRef, {
                 cliente: customers[customerSelected].NickName,
