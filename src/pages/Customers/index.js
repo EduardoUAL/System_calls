@@ -3,6 +3,9 @@ import { useState } from 'react'
 //-- React Icons
 import { FiUser } from 'react-icons/fi'
 
+//--React Router Dom --
+import { useNavigate, useParams } from "react-router-dom"
+
 //-- Components
 import Header from '../../components/Header'
 import Title from '../../components/Title'
